@@ -1,24 +1,10 @@
 "use client"
 
 import { useState } from "react";
-import About from "../section/About";
-import Experience from "../section/Experience";
-import Project from "../section/Project";
-
-const sections = [
-  {
-    id: "about",
-    label: "About",
-  },
-  {
-    id: "experience",
-    label: "Experience",
-  },
-  {
-    id: "projects",
-    label: "Projects",
-  }
-];
+import About from "../components/section/About";
+import Experience from "../components/section/Experience";
+import Project from "../components/section/Project";
+import { sectionsData } from "../components/data/sections";
 
 export default function Home() {
 const [selected, setSelected] = useState("about");
@@ -30,7 +16,7 @@ const [selected, setSelected] = useState("about");
 			<aside className="border-b border-neutral-700 pb-4 md:border-b-0 md:border-r md:pb-0 md:pr-6 lg:pr-8">
 			<nav className="sticky top-20" aria-label="Main navigation">
 				<div className="flex gap-2 overflow-x-auto pb-1 md:flex-col md:overflow-visible md:pb-0">
-				{sections.map((section) => (
+				{sectionsData.map((section) => (
 					<button
 					key={section.id}
 					onClick={() => setSelected(section.id)}

@@ -1,6 +1,3 @@
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-
 interface Project {
     name: string;
     description: string;
@@ -8,7 +5,7 @@ interface Project {
     link?: string;
 }
 
-const projects: Project[] = [
+export const projectsData: Project[] = [
     {
         name: "SuiteScript Manager - VS Code Extension",
         description: `
@@ -72,37 +69,3 @@ The result is a lightweight automation layer around the existing SuiteCloud CLI 
         link: "https://github.com/Monish-K2002/sdf-import-helper"
     }
 ];
-
-export default function Project() {
-    const [selectedProject, setSelectedProject] = useState<string>(projects.find(p => p.default)?.name || "");
-
-    return (
-        <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-[180px_minmax(0,1fr)] md:divide-x md:divide-neutral-900 lg:grid-cols-[220px_minmax(0,1fr)]">
-            <aside className="min-w-0">
-            <nav className="w-full" aria-label="Project navigation">
-                <div className="flex gap-2 overflow-x-auto pb-1 project-scrollbar md:flex-col md:overflow-visible md:pb-0">
-                    {projects.map((project) => (
-                        <button 
-                        key={project.name}
-                        onClick={() => setSelectedProject(project.name)}
-                        aria-pressed={project.name === selectedProject}
-                        className="min-h-11 shrink-0 rounded-lg p-2 text-left text-sm transition-colors hover:bg-neutral-900 hover:text-customGreen active:bg-neutral-800 md:text-base">
-                        <h2 className={project.name === selectedProject ? "text-customGreen" : ""}>{project.name}</h2>
-                        </button>
-                    ))}
-                </div>
-            </nav>
-            </aside>
-            <div className="min-w-0 px-0 py-2 md:p-4">
-                <h1 className="break-words py-3 text-xl font-bold text-neutral-100 sm:text-2xl">{selectedProject || projects.find(p => p.default)?.name} {projects.find(p => p.name === selectedProject)?.link && <a href={projects.find(p => p.name === selectedProject)?.link} target="_blank" rel="noopener noreferrer" className="ml-2 text-sm text-customGreen hover:underline">GitHub</a>}</h1>
-                {selectedProject && (
-                <div className="text-neutral-100 prose prose-invert max-w-none space-y-2">
-                    <ReactMarkdown>
-                        {projects.find(p => p.name === selectedProject)?.description || ""}
-                    </ReactMarkdown>
-                </div>
-)}
-            </div>
-        </div>
-    );
-}

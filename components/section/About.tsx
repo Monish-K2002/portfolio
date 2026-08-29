@@ -5,34 +5,21 @@ import { SkillCard } from "@/components/ui/SkillCard";
 import Socials from "@/components/ui/Socials";
 import { FaEnvelope, FaCopy, FaCheck, FaPhone } from "react-icons/fa";
 import { useState } from "react";
+import CountUp from "react-countup";
+import { aboutData } from "../data/about";
 
 export default function About() {
-    const skills = [
-        {
-            stack: "Languages",
-            skill: ["JavaScript", "TypeScript", "Python"]
-        },
-        {
-            stack: "Frontend",
-            skill: ["Next.js", "React", "HTML", "CSS", "TailwindCSS"]
-        },
-        {
-            stack: "Backend",
-            skill: ["Node.js", "FastAPI", "REST APIs"]
-        },
-        {
-            stack: "Enterprise",
-            skill: ["SuiteScript 2.1", "SuiteQL", "SDF", "Advanced PDF/HTML Templates"]
-        },
-        {
-            stack: "Systems & APIs",
-            skill: ["NetSuite", "REST APIs", "GraphQL"]
-        }
-    ];
     const [copied, setCopied] = useState<string | null>(null);
+    const email = "monishk2003@gmail.com";
+    const phone = "+91 8667491756";
 
     const handleCopy = async (id: string) => {
-        const value = document.getElementById(id)?.textContent;
+        let value: string | null = null;
+        if (id === 'email') {
+            value = email;
+        } else if (id === 'phone') {
+            value = phone;
+        }
         if (value) {
             await navigator.clipboard.writeText(value);
             setCopied(id);
@@ -41,26 +28,27 @@ export default function About() {
             }, 1000);
         }
     };
+    const yoe = new Date().getFullYear() - 2023;
 
     return <div>
         <section className="flex flex-col gap-4">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div className="text-center lg:text-left">
                     <h1 className="h1">
-                    Hello I&apos;m<br /><span className="text-customGreen">Monish K</span>
+                    Hello I&apos;m<br /><span className="text-customGreen">{aboutData.name}</span>
                     </h1>
-                    <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg lg:mx-0 lg:text-justify">I am a Software Engineer with 3+ years of experience building high-reliability enterprise applications, RESTful APIs, and automated integration pipelines using JavaScript, TypeScript, and Python. I specialize in state-driven transaction workflows, asynchronous processing, fault-tolerant systems, and configuration-driven full-stack platforms.
+                    <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg lg:mx-0 lg:text-justify">{aboutData.description}
                     </p>
                 </div>
                 <div className="grid grid-cols-2 items-center justify-center gap-4">
                     <InfoCard
-                        value={`${new Date().getFullYear() - 2023}+`}
+                        value={<CountUp end={yoe} />}
                         label="Years Experience"
                         description="Building enterprise software and integrations."
                     />
 
                     <InfoCard
-                    value="10+"
+                    value={<CountUp end={4}/>}
                     label="Projects"
                     description="Enterprise and personal projects across multiple domains."
                     />
@@ -92,7 +80,7 @@ export default function About() {
                     className="ml-2 text-sm text-white"
                     id="email"
                 >
-                    monishk2002@gmail.com
+                    {email}
                 </span>
                 <span id="copy">{copied === 'email' ? <FaCheck /> : <FaCopy />}</span>
               </button>
@@ -109,16 +97,15 @@ export default function About() {
                     className="ml-2 text-sm text-white"
                     id="phone"
                 >
-                    +91 8667491756
+                    {phone}
                 </span>
                 <span id="copy">{copied === 'phone' ? <FaCheck /> : <FaCopy />}</span>
               </button>
             </div>
 
             <div className="w-full max-w-5xl">
-                {/* <h2 className="h2">Technical Skills</h2> */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {skills.map((skill, index) => (
+                    {aboutData.skills.map((skill, index) => (
                         <SkillCard key={index} stack={skill.stack} skills={skill.skill} />
                     ))}
                 </div>
