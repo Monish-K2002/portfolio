@@ -77,23 +77,24 @@ export default function Project() {
     const [selectedProject, setSelectedProject] = useState<string>(projects.find(p => p.default)?.name || "");
 
     return (
-        <div className="grid grid-cols-[220px_minmax(0,1fr)] gap-4 divide-x divide-neutral-900">
-            <aside>
-            <nav className="w-[10vw]">
-                <div className="flex flex-col">
+        <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-[180px_minmax(0,1fr)] md:divide-x md:divide-neutral-900 lg:grid-cols-[220px_minmax(0,1fr)]">
+            <aside className="min-w-0">
+            <nav className="w-full" aria-label="Project navigation">
+                <div className="flex gap-2 overflow-x-auto pb-1 project-scrollbar md:flex-col md:overflow-visible md:pb-0">
                     {projects.map((project) => (
                         <button 
                         key={project.name}
                         onClick={() => setSelectedProject(project.name)}
-                        className="p-2 rounded-lg text-left hover:bg-neutral-900 active:bg-neutral-800 hover:text-customGreen transition-colors cursor-pointer">
-                        <h1 className={project.name === selectedProject ? "text-customGreen" : ""}>{project.name}</h1>
+                        aria-pressed={project.name === selectedProject}
+                        className="min-h-11 shrink-0 rounded-lg p-2 text-left text-sm transition-colors hover:bg-neutral-900 hover:text-customGreen active:bg-neutral-800 md:text-base">
+                        <h2 className={project.name === selectedProject ? "text-customGreen" : ""}>{project.name}</h2>
                         </button>
                     ))}
                 </div>
             </nav>
             </aside>
-            <div className="min-w-0 p-4">
-                <h1 className="text-2xl font-bold text-neutral-100 py-3">{selectedProject || projects.find(p => p.default)?.name} {projects.find(p => p.name === selectedProject)?.link && <a href={projects.find(p => p.name === selectedProject)?.link} target="_blank" rel="noopener noreferrer" className="text-customGreen hover:underline text-sm ml-2">GitHub</a>}</h1>
+            <div className="min-w-0 px-0 py-2 md:p-4">
+                <h1 className="break-words py-3 text-xl font-bold text-neutral-100 sm:text-2xl">{selectedProject || projects.find(p => p.default)?.name} {projects.find(p => p.name === selectedProject)?.link && <a href={projects.find(p => p.name === selectedProject)?.link} target="_blank" rel="noopener noreferrer" className="ml-2 text-sm text-customGreen hover:underline">GitHub</a>}</h1>
                 {selectedProject && (
                 <div className="text-neutral-100 prose prose-invert max-w-none space-y-2">
                     <ReactMarkdown>

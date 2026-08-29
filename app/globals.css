@@ -24,13 +24,40 @@
   }
 }
   .h1 {
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+    @apply text-[44px] sm:text-[56px] xl:text-[80px] leading-[1.1] font-semibold;
   }
   .h2 {
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+    @apply text-[32px] sm:text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
   }
   .h3 {
     @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+  }
+
+  .project-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #404040 transparent;
+  }
+
+  .project-scrollbar::-webkit-scrollbar {
+      height: 3px;
+  }
+
+  .project-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  .project-scrollbar::-webkit-scrollbar-thumb {
+      background: #404040;
+      border-radius: 9999px;
+      transition: background 0.2s ease;
+  }
+
+  .project-scrollbar:hover::-webkit-scrollbar-thumb {
+      background: #22c55e;
+  }
+
+  .project-scrollbar::-webkit-scrollbar-button {
+      display: none;
   }
 
 body {
@@ -39,4 +66,3 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   
 }
-
