@@ -6,9 +6,13 @@ import About from "../components/section/About";
 import Experience from "../components/section/Experience";
 import Project from "../components/section/Project";
 import { sectionsData } from "../components/data/sections";
+import { projectsData, type Project as ProjectData } from "../components/data/project";
 
 export default function Home() {
 const [selected, setSelected] = useState("about");
+const [selectedProject, setSelectedProject] = useState<ProjectData>(
+  projectsData.find((project) => project.default) ?? projectsData[0]
+);
 
   useEffect(() => {
     const validSectionIds = new Set(sectionsData.map((section) => section.id));
@@ -55,13 +59,38 @@ const [selected, setSelected] = useState("about");
 					</Link>
 				))}
 				</div>
+
+				{selected === "projects" && (
+					<div className="mt-4 border-t border-neutral-800 pt-4 md:ml-3 md:border-l md:border-t-0 md:pl-3">
+						<p className="mb-2 px-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+							Selected projects
+						</p>
+						<div className="project-scrollbar flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
+							{projectsData.map((project) => (
+								<button
+									key={project.name}
+									type="button"
+									onClick={() => setSelectedProject(project)}
+									aria-pressed={project.name === selectedProject.name}
+									className={`min-h-11 max-w-[78vw] shrink-0 cursor-pointer rounded-lg px-3 py-2 text-left text-sm leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-customGreen md:max-w-none md:text-base ${
+										project.name === selectedProject.name
+											? "bg-neutral-900 text-customGreen"
+											: "text-neutral-400 hover:bg-neutral-900 hover:text-customGreen active:bg-neutral-800"
+									}`}
+								>
+									<span className="block whitespace-normal">{project.name}</span>
+								</button>
+							))}
+						</div>
+					</div>
+				)}
 			</nav>
 			</aside>
 
 			<section className="min-w-0">
 			{selected === "about" && <About />}
 			{selected === "experience" && <Experience />}
-			{selected === "projects" && <Project />}
+			{selected === "projects" && <Project selectedProject={selectedProject} />}
 			</section>
 
 		</div>
