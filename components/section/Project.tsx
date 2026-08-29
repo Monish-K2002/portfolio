@@ -33,7 +33,7 @@ export default function Project() {
             <div className="min-w-0 px-0 py-2 md:p-4">
                 <h1 className="break-words py-3 text-xl font-bold text-neutral-100 sm:text-2xl">{selectedProject.name || defaultProject?.name} {selectedProject.link && <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="ml-2 text-sm text-customGreen hover:underline">GitHub</a>}</h1>
                 {selectedProject && (
-                <div className="text-neutral-100 prose prose-invert max-w-none space-y-2">
+                <div className="max-w-5xl text-neutral-100 text-pretty text-justify prose prose-invert space-y-2">
                     <ReactMarkdown>
                         {selectedProject.description || ""}
                     </ReactMarkdown>

@@ -3,7 +3,7 @@
 import { InfoCard } from "@/components/ui/InfoCard";
 import { SkillCard } from "@/components/ui/SkillCard";
 import Socials from "@/components/ui/Socials";
-import { FaEnvelope, FaCopy, FaCheck, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaCopy, FaCheck, FaPhone, FaCalendar, FaCode } from "react-icons/fa";
 import { useState } from "react";
 import CountUp from "react-countup";
 import { aboutData } from "../data/about";
@@ -32,25 +32,33 @@ export default function About() {
 
     return <div>
         <section className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div className="flex flex-col gap-4 max-w-4xl">
                 <div className="text-center lg:text-left">
-                    <h1 className="h1">
-                    Hello I&apos;m<br /><span className="text-customGreen">{aboutData.name}</span>
-                    </h1>
-                    <p className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg lg:mx-0 lg:text-justify">{aboutData.description}
-                    </p>
+                    <h3 className="inline-flex items-center gap-3 text-lg text-neutral-500">
+                        SOFTWRARE ENGINEER <span className="h-1 w-1 rounded-full bg-customGreen" /> TECHNICAL CONSOLUTANT
+                    </h3>
+                    <h2 className="h2">
+                    Hello I&apos;m <span className="text-customGreen">{aboutData.name}</span>
+                    </h2>
+                    <p className="mx-auto mb-4 max-w-2xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg lg:mx-0 lg:text-justify">{aboutData.description}</p>
+                    <span className="inline-flex items-center gap-2 border border-neutral-800 px-3 py-2 rounded-full">
+                        <span className="h-2 w-2 rounded-full bg-customGreen" />
+                        Currently working at <span className="text-customGreen">{aboutData.currentCompany}</span>
+                    </span>
                 </div>
-                <div className="grid grid-cols-2 items-center justify-center gap-4">
+                <div className="grid grid-cols-2 items-center justify-center gap-2 sm:gap-4">
                     <InfoCard
                         value={<CountUp end={yoe} />}
                         label="Years Experience"
                         description="Building enterprise software and integrations."
+                        icon={<FaCalendar />}
                     />
 
                     <InfoCard
-                    value={<CountUp end={4}/>}
-                    label="Projects"
-                    description="Enterprise and personal projects across multiple domains."
+                        value={<CountUp end={6}/>}
+                        label="Projects"
+                        description="Enterprise and personal projects across multiple domains."
+                        icon={<FaCode />}
                     />
 
                 </div>
@@ -66,11 +74,13 @@ export default function About() {
                     Download Resume
                     </a>
                 </div>
-              <Socials containerStyles="flex gap-6" iconStyles="flex h-9 w-9 items-center justify-center rounded-full border border-customGreen/70 text-customGreen text-base transition-all duration-300 hover:-translate-y-1 hover:border-customGreen hover:bg-customGreen/10 hover:text-customGreen hover:shadow-[0_0_16px_rgba(0,255,128,0.12)]" />
+              <Socials 
+                containerStyles="flex gap-6" 
+                iconStyles="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-customGreen px-4 py-2 text-base font-semibold text-customGreen hover:underline sm:px-5 sm:text-lg" />
               <button
                 type="button"
                 aria-label="Copy email address"
-                className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-customGreen px-4 py-2 text-base font-semibold text-customGreen hover:underline sm:px-5 sm:text-lg"
+                className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-customGreen px-4 py-2 text-base font-semibold text-customGreen hover:underline sm:px-5 sm:text-lg cursor-pointer"
                 onClick={async () => {
                     await handleCopy('email');
                 }}
@@ -87,7 +97,7 @@ export default function About() {
               <button
                 type="button"
                 aria-label="Copy phone number"
-                className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-customGreen px-4 py-2 text-base font-semibold text-customGreen hover:underline sm:px-5 sm:text-lg"
+                className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-customGreen px-4 py-2 text-base font-semibold text-customGreen hover:underline sm:px-5 sm:text-lg cursor-pointer"
                 onClick={async () => {
                     await handleCopy('phone');
                 }}
