@@ -6,7 +6,6 @@ import About from "../components/section/About";
 import Experience from "../components/section/Experience";
 import Project from "../components/section/Project";
 import { sectionsData } from "../components/data/sections";
-import { projectsData } from "../components/data/project";
 
 export default function Home() {
 const [selected, setSelected] = useState("about");

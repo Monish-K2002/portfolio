@@ -3,69 +3,154 @@ interface Project {
     description: string;
     default: boolean;
     link?: string;
+    stack?: string[];
+    cards?: ProjectCard[];
+}
+
+interface ProjectCard {
+    title: string;
+    description: string;
 }
 
 export const projectsData: Project[] = [
     {
         name: "SuiteScript Manager - VS Code Extension",
-        description: `
-While developing SuiteScript files, I found myself repeatedly copying code from VS Code and pasting it into NetSuite just to test small changes. The process became tedious and made the development cycle unnecessarily slow, especially when debugging and comparing changes across NetSuite environments. I built **SuiteScript Manager**, a VS Code extension that brings common NetSuite development workflows directly into the editor.
-
-The extension integrates VS Code with a SuiteScript 2.1 RESTlet backend to provide:
-
-* **Code synchronization with NetSuite**, allowing SuiteScript files to be pushed directly to the NetSuite File Cabinet and pulled back from the current or production environment.
-* **Automatic backups before overwriting remote files**, providing a local copy of the previous NetSuite version before a new file is uploaded.
-* **Side-by-side code comparison**, allowing local files to be compared directly against their remote NetSuite versions using VS Code's native diff viewer.
-* **Environment-aware development**, automatically identifying the NetSuite environment from the workspace structure and displaying the active environment in the VS Code status bar, with additional safeguards when working with production.
-* **Saved Search exploration**, allowing developers to browse available NetSuite saved searches, preview their results, and generate SuiteScript 2.x search boilerplate based on the selected search's columns, joins, and summaries.
-* **Execution log monitoring**, providing access to recent SuiteScript execution logs directly within VS Code instead of requiring developers to constantly switch back to the NetSuite UI.
-* **Direct NetSuite navigation**, allowing developers to open the corresponding script or file record in NetSuite directly from VS Code.
-* **Resilient API communication**, with retry handling for transient network failures and rate-limiting/server errors.
-
-The project uses a **TypeScript-based VS Code extension** as the client layer and a **SuiteScript 2.1 RESTlet** as the NetSuite integration layer, with dedicated modules for command orchestration, environment context, configuration, authentication, networking, and UI utilities.`,
+        description: `While developing SuiteScript files, I found myself repeatedly copying code from VS Code and pasting it into NetSuite just to test small changes. The process became tedious and made the development cycle unnecessarily slow, especially when debugging and comparing changes across NetSuite environments. I built **SuiteScript Manager**, a VS Code extension that brings common NetSuite development workflows directly into the editor.`,
         default: true,
-        link: "https://github.com/Monish-K2002/suitescript-manager"
+        link: "https://github.com/Monish-K2002/suitescript-manager",
+        stack: ["TypeScript", "VS Code Extension API", "SuiteScript 2.1", "RESTlet"],
+        cards: [
+            {
+                title: "Code Synchronization",
+                description:
+                    "Push SuiteScript files directly to the NetSuite File Cabinet or pull files from the current or production environment through the VS Code extension.",
+            },
+            {
+                title: "Automatic Backups",
+                description:
+                    "Automatically backs up the existing remote NetSuite file locally before overwriting it, preserving the previous version for recovery.",
+            },
+            {
+                title: "Side-by-Side Diff",
+                description:
+                    "Compare local SuiteScript files directly against their remote NetSuite versions using VS Code's native diff viewer.",
+            },
+            {
+                title: "Environment-Aware Development",
+                description:
+                    "Automatically identifies the active NetSuite environment from the workspace and displays it in the VS Code status bar, with additional safeguards for production.",
+            },
+            {
+                title: "Saved Search Explorer",
+                description:
+                    "Browse NetSuite saved searches, preview their results, and generate SuiteScript 2.x search boilerplate from selected columns, joins, and summary definitions.",
+            },
+            {
+                title: "Execution Log Monitoring",
+                description:
+                    "View recent SuiteScript execution logs directly within VS Code, reducing the need to switch between the editor and NetSuite.",
+            },
+            {
+                title: "Direct NetSuite Navigation",
+                description:
+                    "Open the corresponding NetSuite script or file record directly from VS Code for faster navigation between local development and the NetSuite environment.",
+            },
+            {
+                title: "Resilient API Communication",
+                description:
+                    "Handles transient network failures and rate-limiting or server errors with retry logic to improve reliability when communicating with NetSuite.",
+            },
+        ],
     },
     {
         name: "Git Post-Commit Work Tracker",
         description: `
 While working across multiple projects, I found it difficult to keep track of the work completed for each project, especially when changes were spread across different repositories and environments. Maintaining this information manually was repetitive and easy to forget, so I developed a **Python-based Git post-commit hook** to automatically maintain a project-level work log.
-
-The hook runs after every Git commit and extracts the **commit message and files changed**, then appends the information to the corresponding **project-specific Excel sheet**. The solution is environment-aware, allowing development work to be tracked separately based on the environment associated with the repository, while also supporting an **optional ticket/issue identifier** to associate commits with specific tasks or requirements.
-
-Key capabilities include:
-
-* **Automatic work tracking** by capturing commit messages and changed files after each commit.
-* **Project-specific Excel logs**, keeping development activity organized independently for each project.
-* **Environment-aware tracking**, allowing commits to be categorized according to the development environment.
-* **Optional ticket identification**, enabling work to be linked to a ticket, issue, or requirement when applicable.
-* **Zero manual data entry**, using the Git post-commit lifecycle to update the work log automatically.
-
-The goal was to turn Git commits, which already contain much of the information needed to understand development activity, into a **structured and searchable project work history** without requiring developers to maintain a separate tracker manually.
  `,
-        default: false
+        default: false,
+        stack: ["Python", "Git", "Excel", "Automation"],
+        cards: [
+            {
+                title: "Automatic Work Tracking",
+                description:
+                    "Captures the commit message and changed files automatically after every Git commit using the post-commit lifecycle.",
+            },
+            {
+                title: "Project-Specific Logs",
+                description:
+                    "Appends development activity to the corresponding project-specific Excel sheet, keeping work history organized independently for each project.",
+            },
+            {
+                title: "Environment-Aware Tracking",
+                description:
+                    "Identifies the development environment associated with the repository and categorizes commit activity accordingly.",
+            },
+            {
+                title: "Ticket & Issue Linking",
+                description:
+                    "Supports an optional ticket or issue identifier to associate commits with specific tasks, requirements, or development work.",
+            },
+            {
+                title: "Zero Manual Entry",
+                description:
+                    "Uses Git's post-commit lifecycle to maintain the work log automatically, eliminating the need for developers to update a separate tracker.",
+            },
+            {
+                title: "Structured Work History",
+                description:
+                    "Transforms existing Git commit metadata into a structured and searchable project work history for easier tracking and review.",
+            },
+        ]
     },
     {
         name: "SDF Import Helper",
         description: `
 While working with NetSuite's SuiteCloud Development Framework (SDF), I found that the native workflow did not provide a convenient way to **bulk import multiple SDF objects or SuiteScript files**. In the VS Code extension, multiple files or objects could be selected through the UI, but the process relied on manually searching and selecting items. Accidentally moving the cursor outside the selection menu could cause the entire selection to be lost, making the process frustrating when importing a large number of files.
-
-To solve this, I developed **SDF Import Helper**, a Python-based CLI utility that simplifies bulk SDF imports by allowing developers to provide a list of objects or files in a text file and import them through the SuiteCloud CLI.
-
-Key capabilities include:
-
-* **Bulk SDF imports**, allowing multiple objects or SuiteScript files to be imported through a single command.
-* **Text-based input**, eliminating repetitive UI searching and multi-selection.
-* **Input normalization**, automatically cleaning whitespace, quotes, and commas from the provided list.
-* **SuiteScript path normalization**, automatically adding the "/SuiteScripts/" path and ".js" extension when required.
-* **Configurable imports**, supporting custom SDF destination paths and object-type filters.
-* **Live CLI output**, streaming SuiteCloud CLI progress directly to the terminal.
-* **Interactive execution feedback**, using colored output and a loading spinner to make long-running imports easier to monitor.
-* **Direct integration with the SuiteCloud CLI**, using Python's "subprocess" functionality to execute the underlying "suitecloud object:import" and "suitecloud file:import" commands.
-
-The result is a lightweight automation layer around the existing SuiteCloud CLI that makes large imports **repeatable, less error-prone, and independent of fragile multi-select UI interactions**.
  `,
         default: false,
-        link: "https://github.com/Monish-K2002/sdf-import-helper"
+        link: "https://github.com/Monish-K2002/sdf-import-helper",
+        stack: ["Python", "NetSuite", "CLI", "Automation"],
+        cards: [
+            {
+                title: "Bulk SDF Imports",
+                description:
+                    "Import multiple SDF objects or SuiteScript files through a single command instead of handling each import individually.",
+            },
+            {
+                title: "Text-Based Input",
+                description:
+                    "Accepts object and file lists from a text file, eliminating repetitive UI searching and multi-selection during large imports.",
+            },
+            {
+                title: "Input Normalization",
+                description:
+                    "Automatically cleans whitespace, quotes, and commas from input lists before passing them to the SuiteCloud CLI.",
+            },
+            {
+                title: "SuiteScript Path Normalization",
+                description:
+                    "Automatically adds the /SuiteScripts/ path and .js extension to SuiteScript files when they are not already specified.",
+            },
+            {
+                title: "Configurable Imports",
+                description:
+                    "Supports custom SDF destination paths and object-type filters to control what gets imported and where it is placed.",
+            },
+            {
+                title: "Live CLI Output",
+                description:
+                    "Streams SuiteCloud CLI import progress directly to the terminal so developers can monitor long-running operations in real time.",
+            },
+            {
+                title: "Interactive Feedback",
+                description:
+                    "Uses colored terminal output and a loading spinner to provide clear execution status and feedback during imports.",
+            },
+            {
+                title: "SuiteCloud CLI Integration",
+                description:
+                    "Uses Python subprocess execution to invoke the underlying suitecloud object:import and suitecloud file:import commands directly.",
+            },
+        ]
     }
 ];
