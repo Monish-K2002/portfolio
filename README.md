@@ -4,38 +4,41 @@
 [![React](https://img.shields.io/badge/React-19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-13-black?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![React Markdown](https://img.shields.io/badge/React_Markdown-10-black?style=for-the-badge&logo=markdown&logoColor=white)](https://github.com/remarkjs/react-markdown)
 
-Welcome to the repository for **Monish K's Personal Portfolio**, a modern, minimalist, dark-themed portfolio web application built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+Welcome to the repository for **Monish K's Personal Developer Portfolio**, a modern, high-performance, dark-themed portfolio application built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
-This site serves as a showcase of my professional experience as a Software Engineer & Technical Consultant, highlighted projects, technical skills across enterprise and modern full-stack ecosystems, and developer tooling.
+This site showcases professional engineering experience in NetSuite / SuiteScript 2.1, Python automation utilities, RESTful API integrations, and developer tooling.
 
 ---
 
 ## ✨ Features
 
-- **🖥️ Tabbed Split-Panel Layout**: Smooth client-side section switching between **About**, **Experience**, and **Projects**.
-- **💼 Interactive Projects Showcase**: Dedicated sub-navigation with rich Markdown-rendered deep dives (`react-markdown`) and direct GitHub repository links.
-- **📈 Experience Timeline**: Detailed breakdown of enterprise software engineering accomplishments, architecture designs, and integrations.
-- **🛠️ Technical Skill Matrix**: Categorized skill cards spanning Languages, Frontend, Backend, Enterprise Platforms (NetSuite / SuiteScript), and Systems & APIs.
-- **📋 One-Click Copy & Quick Actions**: Copy contact details (Email, Phone) directly to clipboard with visual feedback indicators.
-- **📄 Resume Download**: Direct download trigger for updated resume PDF.
-- **🎨 Sleek Dark Aesthetic**: Custom neon green (`#00ff6e`) accent design with fine-tuned typography, hover micro-interactions, and borders.
+- **🖥️ Tabbed Navigation Shell**: Fast, responsive client-side switching between **About**, **Experience**, and **Projects** views.
+- **💼 Interactive Projects Browser**: Dedicated project sub-navigation rendering rich Markdown project deep-dives (`react-markdown` + `@tailwindcss/typography`) with direct GitHub repository links.
+- **📈 Enterprise Experience Timeline**: Comprehensive breakdown of software engineering accomplishments, transaction workflows, and API integrations at ennVee Solutions.
+- **🛠️ Categorized Skill Matrix**: Clean badge grid spanning Languages, Frontend, Backend, Enterprise Platforms (NetSuite, SuiteScript 2.1, SuiteQL, SDF), and Systems & APIs.
+- **🔢 Animated Metric Counters**: Dynamic animated counters (`react-countup`) displaying verified years of experience and completed projects.
+- **📋 One-Click Copy Actions**: Instant clipboard copy for Email and Phone with live visual confirmation feedback.
+- **📄 Resume Download**: Direct download trigger for the latest resume document.
+- **🎨 Restrained Dark Aesthetic**: Custom neon green (`#00ff6e`) accent theme with a subtle radial gradient backdrop, fine-tuned typography (`Geist`), and consistent border hierarchy (`neutral-800` default, `customGreen/40` on hover, `customGreen` active).
+- **🗂️ Decoupled Typed Data Layer**: Centralized data configuration under `components/data/` for clean separation of content and presentation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-| :--- | :--- |
-| **Framework** | [Next.js 16](https://nextjs.org/) (App Router) |
-| **Library** | [React 19](https://react.dev/) |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + `@tailwindcss/postcss` |
-| **Icons** | [React Icons](https://react-icons.github.io/react-icons/) (`react-icons/fa`) |
-| **Content Rendering** | [React Markdown](https://github.com/remarkjs/react-markdown) |
-| **Animations** | [Framer Motion](https://www.framer.com/motion/) & `tailwindcss-animate` |
-| **Fonts** | Next.js Google Fonts ([Geist](https://vercel.com/font)) |
+| Layer | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | [Next.js 16](https://nextjs.org/) | App Router, Turbopack, static page optimization |
+| **UI Library** | [React 19](https://react.dev/) | Modern React components and client state |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) | Strict type definitions across data and UI |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | `@tailwindcss/postcss` and `@theme` configuration |
+| **Typography** | [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) | Prose styling for Markdown rendered text |
+| **Icons** | [React Icons](https://react-icons.github.io/react-icons/) | FontAwesome icon family (`react-icons/fa`) |
+| **Content Rendering** | [React Markdown](https://github.com/remarkjs/react-markdown) | Runtime Markdown parsing for project documentation |
+| **Animations & Counters** | [React CountUp](https://github.com/glennreyes/react-countup) | Smooth animated numerical counters |
+| **Fonts** | [Geist & Geist Mono](https://vercel.com/font) | Loaded via `next/font/google` |
 
 ---
 
@@ -44,39 +47,47 @@ This site serves as a showcase of my professional experience as a Software Engin
 ```text
 portfolio/
 ├── app/
-│   ├── favicon.ico         # Website favicon
-│   ├── globals.css         # Tailwind v4 theme definitions and custom classes
-│   ├── layout.tsx          # Root layout with Geist font configuration and metadata
-│   └── page.tsx            # Main application shell with sidebar navigation
+│   ├── favicon.ico             # Site favicon
+│   ├── globals.css             # Tailwind v4 theme, fonts, custom scrollbars, radial glow
+│   ├── layout.tsx              # Root layout with Geist font definition and metadata
+│   └── page.tsx                # Main application page with sidebar navigation
 ├── components/
-│   └── ui/
-│       ├── InfoCard.tsx    # Metric counter cards (Years Experience, Projects)
-│       ├── SkillCard.tsx   # Categorized skill badges
-│       └── Socials.tsx     # Social links (GitHub, LinkedIn)
+│   ├── data/                   # Centralized typed data files
+│   │   ├── about.ts            # Bio, contact details, and skill matrix
+│   │   ├── experience.ts       # Work experience history and achievements
+│   │   ├── project.ts          # Featured projects and Markdown descriptions
+│   │   └── sections.ts         # Navigation tab configurations
+│   ├── section/                # Main section views
+│   │   ├── About.tsx           # Bio, animated stats, resume, socials, skill cards
+│   │   ├── Experience.tsx      # Career timeline and bulleted achievements
+│   │   └── Project.tsx         # Interactive project browser with Markdown viewer
+│   └── ui/                     # Reusable atomic UI components
+│       ├── InfoCard.tsx        # Metric counter card with hover interactions
+│       ├── SkillCard.tsx       # Categorized skill badges
+│       └── Socials.tsx         # Accessible social media links (GitHub, LinkedIn)
 ├── public/
-│   ├── My Resume New.pdf   # Downloadable resume document
-│   └── ...                 # Static assets
-├── section/
-│   ├── About.tsx           # Bio, stats, skills grid, contact triggers, resume
-│   ├── Experience.tsx      # Professional career timeline and bulleted achievements
-│   └── Project.tsx         # Interactive project browser with Markdown renderers
-├── next.config.ts          # Next.js configuration
-├── package.json            # Project dependencies and scripts
-├── postcss.config.mjs      # PostCSS configuration for Tailwind v4
-└── tsconfig.json           # TypeScript configuration
+│   └── My Resume New.pdf       # Downloadable resume document
+├── eslint.config.mjs           # Flat ESLint configuration with Next.js Core Web Vitals
+├── next.config.ts              # Next.js configuration
+├── package.json                # Dependencies and npm scripts
+├── postcss.config.mjs          # PostCSS configuration for Tailwind CSS v4
+├── tsconfig.json               # TypeScript compiler configuration
+└── README.md                   # Project documentation
 ```
 
 ---
 
-## 🌟 Featured Projects Highlighted in Portfolio
+## 🌟 Featured Projects
 
 1. **[SuiteScript Manager (VS Code Extension)](https://github.com/Monish-K2002/suitescript-manager)**
-   - Brings NetSuite development workflows directly into VS Code.
-   - Real-time code synchronization with File Cabinet, pre-overwrite backups, side-by-side native diff viewing, saved search exploration, and execution log monitoring via SuiteScript 2.1 RESTlet.
+   - Integrates NetSuite SuiteScript 2.1 development workflows directly into VS Code.
+   - Features real-time File Cabinet synchronization, automatic pre-overwrite backups, native side-by-side diff comparison, saved search exploration with code generation, and live execution log monitoring.
+
 2. **Git Post-Commit Work Tracker**
-   - Python-based Git hook that extracts commit metadata and changed files to maintain environment-aware, project-specific Excel logs automatically.
+   - Python-based Git post-commit hook that automatically captures commit messages and modified file lists to maintain environment-aware, project-specific Excel activity logs without manual data entry.
+
 3. **[SDF Import Helper](https://github.com/Monish-K2002/sdf-import-helper)**
-   - Python CLI utility wrapping SuiteCloud CLI to enable bulk SDF object/file imports from text lists with input normalization and live feedback.
+   - Python CLI tool wrapping the SuiteCloud CLI to enable bulk SDF object and file imports from text lists with automatic input normalization, path formatting, and real-time terminal feedback.
 
 ---
 
@@ -84,11 +95,10 @@ portfolio/
 
 ### Prerequisites
 
-Ensure you have the following installed on your machine:
-- **Node.js**: `v18.18.0` or higher (Node.js 20+ recommended)
-- **npm**, **yarn**, **pnpm**, or **bun**
+- **Node.js**: `v18.18.0` or higher (`v20+` recommended)
+- **Package Manager**: `npm`, `yarn`, `pnpm`, or `bun`
 
-### Installation
+### Installation & Local Development
 
 1. **Clone the repository:**
    ```bash
@@ -107,37 +117,35 @@ Ensure you have the following installed on your machine:
    bun install
    ```
 
-3. **Start the development server:**
+3. **Run the development server:**
    ```bash
    npm run dev
    ```
 
-4. **View in browser:**
-   Open [http://localhost:3000](http://localhost:3000) to see the application running.
+4. **Open in browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
 ---
 
 ## 📜 Available Scripts
 
-| Script | Description |
+| Command | Description |
 | :--- | :--- |
-| `npm run dev` | Starts the Next.js development server at `http://localhost:3000` |
-| `npm run build` | Compiles and builds the production application |
-| `npm run start` | Runs the built production server |
-| `npm run lint` | Runs ESLint to identify code quality and style issues |
+| `npm run dev` | Launches the Next.js development server with Turbopack |
+| `npm run build` | Builds the optimized static production bundle |
+| `npm run start` | Starts the production server |
+| `npm run lint` | Runs ESLint to check for code quality and syntax issues |
 
 ---
 
 ## 🚢 Deployment
 
-The portfolio is optimized for deployment on the [Vercel Platform](https://vercel.com/):
+This portfolio is optimized for zero-config deployment on [Vercel](https://vercel.com/):
 
-1. Push your latest changes to GitHub.
-2. Import the `portfolio` repository into Vercel.
-3. Vercel will automatically detect Next.js and configure build settings (`npm run build`).
-4. Click **Deploy**.
-
-Alternatively, it can be deployed to any hosting platform supporting Node.js or static export.
+1. Push your repository to GitHub.
+2. Import the project in Vercel.
+3. Vercel automatically detects Next.js and builds the project via `npm run build`.
+4. The site is instantly deployed with global edge caching.
 
 ---
 
@@ -146,5 +154,4 @@ Alternatively, it can be deployed to any hosting platform supporting Node.js or 
 - **Monish K** — Software Engineer & Technical Consultant
 - **GitHub**: [@Monish-K2002](https://github.com/Monish-K2002)
 - **LinkedIn**: [monishk2002](https://www.linkedin.com/in/monishk2002)
-- **Email**: [monishk2002@gmail.com](mailto:monishk2002@gmail.com)
-
+- **Email**: [monishk2003@gmail.com](mailto:monishk2003@gmail.com)
