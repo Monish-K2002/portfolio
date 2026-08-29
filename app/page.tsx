@@ -33,7 +33,7 @@ const [selectedProject, setSelectedProject] = useState<ProjectData>(
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-neutral-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-transparent text-foreground">
 		<div className="grid min-h-screen grid-cols-1 gap-8 px-4 py-8 sm:px-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12 lg:px-8 lg:py-16">
 
 			<aside className="border-b border-neutral-800 pb-4 md:border-b-0 md:border-r md:pb-0 md:pr-6 lg:pr-8">

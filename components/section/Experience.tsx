@@ -102,7 +102,7 @@ export default function Experience() {
               </div>
             </div>
 
-            <aside className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {/* <aside className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {experience.metrics.map((metric, index) => (
                 <div
                   key={metric.label}
@@ -120,7 +120,7 @@ export default function Experience() {
                   <p className="sr-only">{metric.description}</p>
                 </div>
               ))}
-            </aside>
+            </aside> */}
           </div>
 
           <section className="mt-8 border-y border-neutral-800 py-5" aria-label="Impact summary">
