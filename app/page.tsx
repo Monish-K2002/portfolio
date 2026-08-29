@@ -1,14 +1,33 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import About from "../components/section/About";
 import Experience from "../components/section/Experience";
 import Project from "../components/section/Project";
 import { sectionsData } from "../components/data/sections";
+import { projectsData } from "../components/data/project";
 
 export default function Home() {
 const [selected, setSelected] = useState("about");
+
+  useEffect(() => {
+    const validSectionIds = new Set(sectionsData.map((section) => section.id));
+    const syncSectionWithHash = () => {
+      const sectionId = window.location.hash.slice(1);
+
+      if (validSectionIds.has(sectionId)) {
+        setSelected(sectionId);
+      } else if (!sectionId) {
+        setSelected("about");
+      }
+    };
+
+    syncSectionWithHash();
+    window.addEventListener("hashchange", syncSectionWithHash);
+
+    return () => window.removeEventListener("hashchange", syncSectionWithHash);
+  }, []);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-neutral-950 text-white">
