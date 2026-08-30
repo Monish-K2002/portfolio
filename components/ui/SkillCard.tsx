@@ -5,10 +5,10 @@ interface SkillCardProps {
 
 export function SkillCard({ stack, skills }: SkillCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/30 p-6 transition-all duration-300 hover:border-customGreen/40 hover:bg-neutral-900/60">
+    <div className="group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/30 p-4 sm:p-6 transition-all duration-300 hover:border-customGreen/40 hover:bg-neutral-900/60">
       {/* Stack */}
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold text-white">
+        <h3 className="text-md sm:text-xl font-semibold text-white">
           {stack}
         </h3>
 
@@ -20,7 +20,7 @@ export function SkillCard({ stack, skills }: SkillCardProps) {
         {skills.map((item) => (
           <span
             key={item}
-            className="rounded-md border border-neutral-800 bg-neutral-950/50 px-3 py-1.5 text-sm text-neutral-400 transition-colors duration-300 group-hover:border-neutral-700 group-hover:text-neutral-300"
+            className="rounded-md border border-neutral-800 bg-neutral-950/50 px-3 py-1.5 text-xs sm:text-sm text-neutral-400 transition-colors duration-300 group-hover:border-neutral-700 group-hover:text-neutral-300"
           >
             {item}
           </span>

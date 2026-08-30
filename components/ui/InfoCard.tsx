@@ -7,7 +7,7 @@ type InfoCardProps = {
 
 export function InfoCard({ value, label, description, icon }: InfoCardProps) {
     return (
-        <div className="group relative flex min-h-14 max-w-[15vw] flex-col justify-between overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/30 p-4 transition-all duration-300 hover:border-customGreen/40 hover:bg-neutral-900/60 sm:min-h-32 sm:p-6">
+        <div className="group relative flex min-h-14 max-w-[40vw] sm:max-w-[15vw] flex-col justify-between overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/30 p-4 transition-all duration-300 hover:border-customGreen/40 hover:bg-neutral-900/60 sm:min-h-32 sm:p-6">
             <div className="text-4xl font-bold tracking-tight text-customGreen transition-transform duration-300 group-hover:translate-x-1 sm:text-5xl">
                 {value}+
             </div>
